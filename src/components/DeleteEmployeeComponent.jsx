@@ -1,3 +1,4 @@
+// ListEmployeeComponent.js
 import React, { useState, useEffect } from 'react';
 import EmployeeService from '../services/EmployeeService';
 import { useNavigate } from 'react-router-dom';
@@ -20,14 +21,6 @@ function ListEmployeeComponent() {
         }
     };
 
-    const addEmployee = () => {
-        navigate('/add-employee');
-    };
-
-    const updateEmployee = (id) => {
-        navigate(`/update-employee/${id}`);
-    };
-
     const deleteEmployee = async (id) => {
         try {
             await EmployeeService.deleteEmployee(id);
@@ -36,6 +29,14 @@ function ListEmployeeComponent() {
             console.error('Error deleting employee:', error);
             // Handle error appropriately (e.g., show an error message)
         }
+    };
+
+    const addEmployee = () => {
+        navigate('/add-employee');
+    };
+
+    const updateEmployee = (id) => {
+        navigate(`/update-employee/${id}`);
     };
 
     return (
@@ -55,7 +56,7 @@ function ListEmployeeComponent() {
                             <th>Employee First Name</th>
                             <th>Employee Last Name</th>
                             <th>Employee Email Id</th>
-                            <th>Actions</th> {/* Changed 'Actions' */}
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
